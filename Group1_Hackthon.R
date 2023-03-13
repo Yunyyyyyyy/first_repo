@@ -19,4 +19,17 @@ raw_data_2015 %<>%
   `colnames<-`(c('Happiness_Rank', 'Happiness_Score', 'Health_Life_Expectancy')) %>%
   mutate(Health_Life_Expectancy = factor(Health_Life_Expectancy))
 
+#data visualization
 
+my_data %>%
+  ggplot(aes(x = Health..Life.Expectancy., y = Happiness.Score)) +
+  geom_point(aes(colour = Happiness.Rank)) +
+  geom_smooth(se = FALSE) +
+  theme(text = element_text(size = 13)) +
+  theme_minimal() + 
+  labs(x = "Life Expectancy",
+       y = "Happiness Score", 
+       colour = "Rank")
+
+#correlation
+cor(my_data$Health..Life.Expectancy., my_data$Happiness.Score)
